@@ -1,23 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useRef, useEffect } from "react"
 
 function App() {
+
+  const testRef = useRef(null)
+  let myCanvas
+  let ctx
+  const activateDraw = (ref) => {
+    console.log('this is the canvas DOM element you want', ref)
+    myCanvas = ref
+    ctx = ref.getContext('2d')
+    // draw stuff
+    console.log(ctx)
+    // console.log(testRef, "-")
+  }
+  const activateCanvas = (<canvas ref={(e) => console.log(e)}>
+
+  </canvas>)
+  
+  // console.log("myCanvas", myCanvas.current)
+  // useEffect(() => {
+  //   // console.log("myCanvas", myCanvas.current)
+  //   console.log("this da seasn",ctx)
+  //   console.log('this is tnt', myCanvas)
+  // }, [])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <h1>Jump n Run</h1>
+      { activateCanvas }
+      <canvas id="canvas" ref={testRef}>
+    
+      </canvas>
+     
     </div>
   );
 }
